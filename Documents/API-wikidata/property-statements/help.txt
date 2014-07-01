@@ -1,0 +1,10 @@
+Dies sind Scripte, die überprüfen, ob es in einem der Properties Claims gibt, indem durch es durch alle Properties durchgeht und sich die Daten dieser holt.
+
+property-statements.py ist für Wikidata
+test-property-statements.py ist für das lokale Wikibase
+
+(Gut zu wissen: innerhalb der Funktion get_all_properties wird ein API Aufruf verwendet. Dieser nimmt den Namespace. Bei Wikidata ist der Namespace der Properties 120, 
+beim lokalen wikibase ist der namespace 122)
+
+in old-version sind die beiden Scripts noch nicht refactored U.a. rufen sich da die Funktionen noch gegenseitig auf, nicht über Parameter
+und es gibt noch nicht die Funktion url_opener um die Redundanz des Aufrufes des url-openers zu verringern. 
