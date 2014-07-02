@@ -30,6 +30,13 @@ def number_properties():
 			property_titles.append(tmp[1])	
 	return len(property_titles)
 	
+#gets the bureaucrats with names and details from the api and returns the number of bureaucrats
+def number_bureaucrats():
+	bureaucrats = url_opener("https://www.wikidata.org/w/api.php?action=query&list=allusers&augroup=bureaucrat&format=json")
+	b = len(bureaucrats["query"]["allusers"])
+	return b
+	
+	
 #saves the json data in a python dictonary to get the data from the statistic already made
 statsdict = url_opener('https://www.wikidata.org/w/api.php?action=query&meta=siteinfo&siprop=statistics&format=json')
 
@@ -40,11 +47,12 @@ users = statsdict["query"]["statistics"]["users"]
 active_users = statsdict["query"]["statistics"]["activeusers"]
 admins = statsdict["query"]["statistics"]["admins"]
 
-#percent_active_users = (float(active_users)/float(users)) * 100.0 //calculating the number of active users doesn't make sense in this case. 
+
 average_edits_per_page = float(edits) / float(pages)
 # round average_edits_per_page to two decimal places
 average_edits_per_page = round(average_edits_per_page, 2)
 
 properties = number_properties()
+bureaucrats = number_bureaucrats()
 
-print "Pages: " + str(pages) + "\nArticles: " + str(articles) + "\nEdits: " + str(edits) + "\nUsers: "+ str(users) + "\nActive Users: " + str(active_users) + "\nAdmins: " + str(admins) + "\nAverage Edits per Page: " + str(average_edits_per_page) + "\nNumber of Properties: " + str(properties)
+print "Pages: " + str(pages) + "\nArticles: " + str(articles) + "\nEdits: " + str(edits) + "\nUsers: "+ str(users) + "\nActive Users: " + str(active_users) + "\nAdmins: " + str(admins) + "\nBureaucrats: " + str(bureaucrats) + "\nAverage Edits per Page: " + str(average_edits_per_page) + "\nNumber of Properties: " + str(properties)
