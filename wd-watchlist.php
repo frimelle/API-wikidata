@@ -1,6 +1,5 @@
 <?php
 	
-	//session_start();
 	$db = mysqli_connect( "localhost","root","password","my_wiki" );
 	if ( !$db ) {
 		echo mysqli_connect_error();
@@ -22,7 +21,7 @@
 			array_push($user, $u);
 			$user_count++;
 		}
-		//check ig the user is already counted as someone who watchlisted something in the namespace from 120 to 123, if not, count it
+		//check if the user is already counted as someone who watchlisted something in the namespace from 120 to 123, if not, count it
 		if( !in_array($u, $user_wd) && $row->wl_namespace >= 120 && $row->wl_namespace <=123 ) {
 			array_push($user_wd, $u);
 			$user_wd_count++;
