@@ -1,5 +1,4 @@
 <?php
-	
 	$db = mysqli_connect( "localhost","root","password","my_wiki" );
 	if ( !$db ) {
 		echo mysqli_connect_error();
@@ -30,5 +29,4 @@
 
 	echo "number of users, who watchlisted something in total: " .$user_count ."\n";
 	echo "number of users, who watchlisted something in the namespace from 120 to 123: " .$user_wd_count ."\n";
-
 ?>
